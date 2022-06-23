@@ -18,7 +18,9 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^1.1.4",
+    "@nuxtjs/axios": "^5.13.6",
     "element-plus": "^2.2.0",
+    "leaflet": "^1.8.0",
     "pinia": "^2.0.14",
     "vue": "^3.2.33"
   },

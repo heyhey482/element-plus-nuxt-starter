@@ -8,5 +8,7 @@ provide(ID_INJECTION_KEY, {
 </script>
 
 <template>
-  <NuxtPage />
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
 </template>

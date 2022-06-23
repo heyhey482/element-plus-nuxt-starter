@@ -1,9 +1,12 @@
 import { defineNuxtConfig } from 'nuxt'
+import { Static } from 'vue'
 
 const lifecycle = process.env.npm_lifecycle_event
 
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
+  ssr: false,
+  target: 'static',
   // meta
   meta: {
     title: 'Element Plus + Nuxt 3',
@@ -15,11 +18,20 @@ export default defineNuxtConfig({
         content: 'ElementPlus + Nuxt3',
       },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+    ],
   },
-
-  // css
-  css: ['~/assets/scss/index.scss'],
+  nitro: {
+    prerender: {
+      routes: ['/hi/{id}', '/user']
+    }
+  },
+  css: [
+    '~/assets/scss/index.scss',
+    '~/assets/sass/main.css',
+    '~/assets/sass/main.scss'
+  ],
 
   // build
   build: {
@@ -33,16 +45,15 @@ export default defineNuxtConfig({
   },
 
   // build modules
-  modules: ['@vueuse/nuxt', '@unocss/nuxt', '@pinia/nuxt'],
-
-  // auto import components
+  modules: [
+    '@vueuse/nuxt', 
+    '@unocss/nuxt', 
+    '@pinia/nuxt'
+  ],
   components: true,
-
-  // vueuse
   vueuse: {
     ssrHandlers: true,
   },
-
   unocss: {
     uno: true,
     attributify: true,
